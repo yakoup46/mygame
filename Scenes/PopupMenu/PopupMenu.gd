@@ -1,20 +1,10 @@
 extends Control
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+onready var Settings = preload("res://Scenes/Settings/Settings.tscn")
 
 
 func _on_Back_pressed():
-	queue_free()
+	SceneSwitcher.remove_scene(self)
 
 func _on_Quit_pressed():
 	queue_free()
@@ -22,4 +12,4 @@ func _on_Quit_pressed():
 
 func _on_Settings_pressed():
 	queue_free()
-	SceneSwitcher.switch_scene("res://Scenes/Settings/Settings.tscn")
+	SceneSwitcher.add_scene(Settings.instance())
