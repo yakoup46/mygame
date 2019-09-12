@@ -1,29 +1,52 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://Box/RigidBody2D.gd" type="Script" id=1]
-[ext_resource path="res://Box/box.png" type="Texture" id=2]
+[ext_resource path="res://Box/Box.gd" type="Script" id=1]
+[ext_resource path="res://white_circle.png" type="Texture" id=2]
+[ext_resource path="res://red_circle.png" type="Texture" id=3]
+[ext_resource path="res://Box/RigidBody2D.gd" type="Script" id=4]
+[ext_resource path="res://Box/box.png" type="Texture" id=5]
 
 [sub_resource type="PhysicsMaterial" id=1]
-bounce = 0.5
+friction = 0.25
+rough = true
+bounce = 0.35
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 95.4715, 93.3932 )
+custom_solver_bias = 1.0
+extents = Vector2( 87.7003, 88.3299 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 87.8274, 87.7464 )
 
 [node name="Box" type="Node2D"]
-editor/display_folded = true
+script = ExtResource( 1 )
+dot_number = 12
+dot_scale = 2.0
+dot_texture = ExtResource( 2 )
+red_dot_texture = ExtResource( 3 )
+max_range = 1000.0
+time_fade_in = 0.05
+time_fade_out = 0.1
+time_anim = 1.0
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
 mode = 1
 physics_material_override = SubResource( 1 )
 gravity_scale = 9.0
-script = ExtResource( 1 )
+angular_velocity = 0.5
+script = ExtResource( 4 )
 
 [node name="Sprite" type="Sprite" parent="RigidBody2D"]
 editor/display_folded = true
 
 [node name="box" type="Sprite" parent="RigidBody2D/Sprite"]
 scale = Vector2( 0.75, 0.75 )
-texture = ExtResource( 2 )
+texture = ExtResource( 5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
 shape = SubResource( 2 )
+
+[node name="Box" type="Area2D" parent="RigidBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D/Box"]
+shape = SubResource( 3 )
