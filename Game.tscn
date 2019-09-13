@@ -59,7 +59,7 @@ position = Vector2( 146.574, 2534.87 )
 z_index = 1
 
 [node name="LandingZone" parent="." instance=ExtResource( 7 )]
-position = Vector2( 1242.37, 493.159 )
+position = Vector2( 1236.03, 505.837 )
 
 [node name="Block2" parent="." instance=ExtResource( 5 )]
 position = Vector2( -30.9737, 1083.61 )

@@ -5,6 +5,7 @@ onready var ui = preload("res://UI.tscn")
 var score = 0
 var currentBox
 var boxHolder
+var boxes = []
 
 func _ready():
 	var node = ui.instance()
@@ -16,6 +17,7 @@ func _ready():
 	
 	currentBox = $Box
 	boxHolder = $Box.duplicate()
+	boxes.append($Box)
 	
 func _process(delta):
 	#if ($Box.get_node("RigidBody2D").linear_velocity.y == 0 && $Box.get_node("RigidBody2D").angular_velocity == 0):
@@ -24,25 +26,29 @@ func _process(delta):
 
 func _physics_process(delta):
 	score = 0
-	var inRed = isInside($LandingZone.get_node("Red"), $Box.get_node("RigidBody2D/Box"))
-	var inGreen = isInside($LandingZone.get_node("Green"), $Box.get_node("RigidBody2D/Box"))
-	var inYellow = isInside($LandingZone.get_node("Yellow"), $Box.get_node("RigidBody2D/Box"))
 	
-	if inRed:
-		score = 1
+	for box in boxes:
+		
+		var inRed = isInside($LandingZone.get_node("Red"), box.get_node("RigidBody2D/Box"))
+		var inGreen = isInside($LandingZone.get_node("Green"), box.get_node("RigidBody2D/Box"))
+		var inYellow = isInside($LandingZone.get_node("Yellow"), box.get_node("RigidBody2D/Box"))
 	
-	if inYellow:
-		score = 2
+		if inRed:
+			score = 1
+		
+		if inYellow:
+			score = 2
+		
+		if inGreen:
+			score = 3
 	
-	if inGreen:
-		score = 3
-	
-	$Score.text = str("Score: ", score)
+		$Score.text = str("Score: ", score)
 	
 	if (currentBox.get_node("RigidBody2D").mode == RigidBody2D.MODE_RIGID):
 		currentBox.active = false
 		currentBox = boxHolder.duplicate()
 		currentBox.get_node("RigidBody2D/CollisionShape2D").disabled = true
+		boxes.append(currentBox)
 		add_child(currentBox)
 
 func isInside(area, box):

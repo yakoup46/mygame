@@ -7,9 +7,8 @@
 [ext_resource path="res://Box/box.png" type="Texture" id=5]
 
 [sub_resource type="PhysicsMaterial" id=1]
-friction = 0.25
+friction = 0.5
 rough = true
-bounce = 0.35
 
 [sub_resource type="RectangleShape2D" id=2]
 custom_solver_bias = 1.0
@@ -30,12 +29,10 @@ time_fade_out = 0.1
 time_anim = 1.0
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
+position = Vector2( -18.0635, 6.021 )
 mode = 1
 physics_material_override = SubResource( 1 )
 gravity_scale = 9.0
-contacts_reported = 1
-contact_monitor = true
-angular_velocity = 0.5
 script = ExtResource( 4 )
 
 [node name="Sprite" type="Sprite" parent="RigidBody2D"]
@@ -53,4 +50,3 @@ editor/display_folded = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D/Box"]
 shape = SubResource( 3 )
-[connection signal="body_entered" from="RigidBody2D" to="RigidBody2D" method="_on_RigidBody2D_body_entered"]

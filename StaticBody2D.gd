@@ -8,6 +8,8 @@ var shape
 var shapeowner
 
 func _ready():
+	friction = 0
+	bounce = 0.5
 	win = Vector2(1440, 2880)
 	thalf = (tin + tout) /2
 	for extpos in [

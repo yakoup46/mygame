@@ -22,8 +22,8 @@ run/main_scene="res://UI.tscn"
 
 window/size/width=1440
 window/size/height=2880
-window/size/test_width=450
-window/size/test_height=900
+window/size/test_width=400
+window/size/test_height=800
 window/dpi/allow_hidpi=true
 window/handheld/orientation="portrait"
 window/stretch/mode="viewport"
