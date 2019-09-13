@@ -24,6 +24,9 @@ func _input(event):
 			apply_central_impulse(Vector2(dir.x, -sqrt(abs(dir.y*(2000 + (2880 - window.y))))))
 
 func _physics_process(delta):
-	#if (linear_velocity.y == 0 && angular_velocity == 0):
-	#	print("stoppe")
 	pass
+
+func _on_RigidBody2D_body_entered(body):
+	if (body.get_parent().name == 'Box'):
+		bounce = 0
+		body.bounce = 0
