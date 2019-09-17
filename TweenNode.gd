@@ -2,14 +2,15 @@ class_name TweenNode
 
 # Member Variables
 
-var tweem_running = false
+var tween_running = true
 var sprite
 
 # Constants
 
 # Enums
 
-func _init():
+func _init(texture, position):
 	sprite = Sprite.new()
 	sprite.texture = texture
-	sprite.global_position = global_position
+	sprite.global_position = position
+

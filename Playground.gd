@@ -24,31 +24,23 @@ var atPos = 0
 
 export (int) var number_of_dots = 5
 
-var nodes = []
+var dots = []
 
 func _ready():
-	for d in dots:
-		nodes.append(TweenNode.new())
-	sprite = Sprite.new()
+	for d in number_of_dots:
+		var node = TweenNode.new(texture, global_position)
 
-	sprite.texture = texture
-	sprite.global_position = global_position
-	sprite.name = "one"
+		dots.append(node)
+		add_child(node.sprite)
 
-	sprite2 = Sprite.new()
-
-	sprite2.texture = texture
-	sprite2.global_position = global_position
-	sprite2.name = "two"
-
-	add_child(sprite)
-	add_child(sprite2)
 	set_state()
 
 func _physics_process(delta):
-	tween(sprite, 250, funcref(self, "easeOut"), funcref(self, "progress"), funcref(self, "complete"))
-	tween(sprite2, 500, funcref(self, "easeOut"), funcref(self, "progress"), funcref(self, "complete"))
-	pass
+	for i in range(0, dots.size()):
+		var dot = dots[i]
+		
+		tween(dot, 250 * (i + 1), funcref(self, "easeOut"), funcref(self, "progress"), funcref(self, "complete"))
+
 
 func easeOut(t, b, c, d):
 	t /= float(d)
@@ -56,7 +48,7 @@ func easeOut(t, b, c, d):
 	return -c * t*(t-2) + b
 
 func set_state():
-	start = sprite.global_position
+	start = dots[0].sprite.global_position
 	startTime = OS.get_ticks_msec()
 	change = positions[atPos]
 
@@ -64,33 +56,33 @@ func progress():
 	pass
 
 func complete(obj):
-	if (obj.name == "one"):
-		if (!spriteDone):
-			spritesDone += 1
-			spriteDone = true
-	if (obj.name == "two"):
-		if (!sprite2Done):
-			spritesDone += 1
-			sprite2Done = true
+	obj.tween_running = false
 
-	if (spritesDone == 2):
+	var running = false
+
+	for d in dots:
+		if (d.tween_running == true):
+			running = true
+			break
+
+	if (!running):
 		atPos += 1
 
 		if (atPos > 3):
 			atPos = 0
 
 		set_state()
-		spritesDone = 0
-		spriteDone = false
-		sprite2Done = false
+
+		for d in dots:
+			d.tween_running = true
 
 func tween(obj, duration, easingFunc, onProgress, onComplete):
 	var time = OS.get_ticks_msec() - startTime
 
 	if (time < duration):
-		obj.global_position = easingFunc.call_func(time, start, change, duration)
+		obj.sprite.global_position = easingFunc.call_func(time, start, change, duration)
 		onProgress.call_func()
 	else:
 		time = duration
-		obj.global_position = easingFunc.call_func(time, start, change, duration)
+		obj.sprite.global_position = easingFunc.call_func(time, start, change, duration)
 		onComplete.call_func(obj)
