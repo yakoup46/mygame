@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Score.gd" type="Script" id=1]
+[ext_resource path="res://red_circle.png" type="Texture" id=2]
+
+[node name="Score" type="Node2D"]
+position = Vector2( 160, 120 )
+script = ExtResource( 1 )
+texture = ExtResource( 2 )

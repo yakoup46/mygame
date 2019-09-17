@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Playground.gd" type="Script" id=1]
+[ext_resource path="res://red_circle.png" type="Texture" id=2]
+
+[node name="Playground" type="Node2D"]
+position = Vector2( 300, 280 )
+script = ExtResource( 1 )
+number_of_dots = 4
+texture = ExtResource( 2 )

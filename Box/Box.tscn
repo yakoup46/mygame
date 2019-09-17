@@ -20,7 +20,7 @@ extents = Vector2( 87.8274, 87.7464 )
 [node name="Box" type="Node2D"]
 script = ExtResource( 1 )
 dot_number = 12
-dot_scale = 2.0
+dot_scale = 2.5
 dot_texture = ExtResource( 2 )
 red_dot_texture = ExtResource( 3 )
 max_range = 1000.0
