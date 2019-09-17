@@ -15,7 +15,6 @@ extents = Vector2( 151.215, 151.423 )
 extents = Vector2( 121.913, 122.762 )
 
 [node name="LandingZone" type="Node2D"]
-editor/display_folded = true
 script = ExtResource( 1 )
 
 [node name="Red" type="Area2D" parent="."]

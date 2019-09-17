@@ -28,7 +28,7 @@ var dots = []
 
 func _ready():
 	for d in number_of_dots:
-		var node = TweenNode.new(texture, global_position)
+		var node = TweenNode.new(texture, position)
 
 		dots.append(node)
 		add_child(node.sprite)
@@ -48,7 +48,7 @@ func easeOut(t, b, c, d):
 	return -c * t*(t-2) + b
 
 func set_state():
-	start = dots[0].sprite.global_position
+	start = dots[0].sprite.position
 	startTime = OS.get_ticks_msec()
 	change = positions[atPos]
 
@@ -80,9 +80,9 @@ func tween(obj, duration, easingFunc, onProgress, onComplete):
 	var time = OS.get_ticks_msec() - startTime
 
 	if (time < duration):
-		obj.sprite.global_position = easingFunc.call_func(time, start, change, duration)
+		obj.sprite.position = easingFunc.call_func(time, start, change, duration)
 		onProgress.call_func()
 	else:
 		time = duration
-		obj.sprite.global_position = easingFunc.call_func(time, start, change, duration)
+		obj.sprite.position = easingFunc.call_func(time, start, change, duration)
 		onComplete.call_func(obj)
