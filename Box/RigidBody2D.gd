@@ -27,7 +27,7 @@ func _input(event):
 			#var extra = 2000 + ((1 - (window.x/float(1440))) * 2000)
 			#print(extra)
 			
-				apply_central_impulse(Vector2(dir.x, -sqrt(abs(dir.y*(2000)))))
+				apply_central_impulse(Vector2(dir.x, -sqrt(abs(dir.y*(8000)))))
 				angular_velocity = dir.normalized().x
 
 func _physics_process(delta):

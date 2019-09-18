@@ -28,6 +28,7 @@ shape = SubResource( 1 )
 
 [node name="Yellow" type="Area2D" parent="."]
 editor/display_folded = true
+visible = false
 position = Vector2( 30, 30 )
 
 [node name="YellowBox" type="Sprite" parent="Yellow"]
@@ -39,6 +40,7 @@ shape = SubResource( 2 )
 
 [node name="Green" type="Area2D" parent="."]
 editor/display_folded = true
+visible = false
 position = Vector2( 60, 60 )
 
 [node name="GreenBox" type="Sprite" parent="Green"]

@@ -35,12 +35,12 @@ func _physics_process(delta):
 	
 		if inRed:
 			score = 1
+			
+		#if inYellow:
+			#score = 2
 		
-		if inYellow:
-			score = 2
-		
-		if inGreen:
-			score = 3
+		#if inGreen:
+			#score = 3
 	
 		$Score.text = str("Score: ", score)
 	
@@ -50,7 +50,15 @@ func _physics_process(delta):
 		currentBox.get_node("RigidBody2D/CollisionShape2D").disabled = true
 		boxes.append(currentBox)
 		add_child(currentBox)
-
+		
+	if (score == 1):
+		$LandingZone.get_node("Red").visible = false
+		$Playground.visible = true
+		
+	if (score == 0):
+		$LandingZone.get_node("Red").visible = true
+		$Playground.visible = false
+		
 func isInside(area, box):
 	var boxPos = box.global_position
 	var areaPos = area.global_position
