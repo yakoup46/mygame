@@ -74,5 +74,6 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Score: 3"
 
 [node name="Playground" parent="." instance=ExtResource( 9 )]
-position = Vector2( 33.127, 833.696 )
+visible = false
+position = Vector2( 1176.9, 445.453 )
 z_index = 1

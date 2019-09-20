@@ -38,9 +38,13 @@ func _physics_process(delta):
 		
 		if inYellow:
 			score = 2
+			
+		print(inGreen)
 		
 		if inGreen:
 			score = 3
+			$LandingZone.get_node("Green").visible = false
+			$Playground.visible = true
 	
 		$Score.text = str("Score: ", score)
 	

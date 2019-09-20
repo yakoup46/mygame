@@ -8,16 +8,13 @@ var start
 var startTime
 var change
 
-var spriteDone = false
-var sprite2Done = false
-
 var spritesDone = 0
 
 var positions = [
-	Vector2(200, 0),
-	Vector2(0, 200),
-	Vector2(-200, 0),
-	Vector2(0, -200)
+	Vector2(225, 0),
+	Vector2(0, 225),
+	Vector2(-225, 0),
+	Vector2(0, -225)
 ]
 
 var atPos = 0
@@ -28,10 +25,13 @@ var dots = []
 
 func _ready():
 	for d in number_of_dots:
-		var node = TweenNode.new(texture, position)
+		var node = TweenNode.new(texture, global_position - position)
+		
+		print(global_position)
 
 		dots.append(node)
 		add_child(node.sprite)
+		print(node.sprite.global_position)
 
 	set_state()
 
@@ -39,7 +39,7 @@ func _physics_process(delta):
 	for i in range(0, dots.size()):
 		var dot = dots[i]
 		
-		tween(dot, 250 * (i + 1), funcref(self, "easeOut"), funcref(self, "progress"), funcref(self, "complete"))
+		tween(dot, 1 + (i * 50), funcref(self, "easeOut"), funcref(self, "progress"), funcref(self, "complete"))
 
 
 func easeOut(t, b, c, d):
