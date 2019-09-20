@@ -22,7 +22,6 @@ var positions = [
 
 # Enums
 
-
 func _init(texture, position, i):
 	sprite = Sprite.new()
 	sprite.texture = texture

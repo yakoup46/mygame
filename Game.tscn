@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
 [ext_resource path="res://sky.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://LandingZone.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Inconsolata.otf" type="DynamicFontData" id=8]
 [ext_resource path="res://Playground.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Dots.tscn" type="PackedScene" id=10]
 
 [sub_resource type="PhysicsMaterial" id=1]
 rough = true
@@ -76,3 +77,6 @@ text = "Score: 3"
 [node name="Playground" parent="." instance=ExtResource( 9 )]
 position = Vector2( 1046.93, 674.276 )
 z_index = 1
+
+[node name="Dots" parent="." instance=ExtResource( 10 )]
+position = Vector2( 868.733, 2307.77 )

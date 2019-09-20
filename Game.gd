@@ -52,12 +52,12 @@ func _physics_process(delta):
 		add_child(currentBox)
 		
 	if (score == 1):
-		$LandingZone.get_node("Red").visible = false
-		$Playground.visible = true
-		
-	if (score == 0):
 		$LandingZone.get_node("Red").visible = true
 		$Playground.visible = false
+		
+	if (score == 0):
+		$LandingZone.get_node("Red").visible = false
+		$Playground.visible = true
 		
 func isInside(area, box):
 	var boxPos = box.global_position
