@@ -21,14 +21,14 @@ _global_script_class_icons={
 [application]
 
 config/name="Boxed"
-run/main_scene="res://UI.tscn"
+run/main_scene="res://Scenes/UI.tscn"
 
 [display]
 
 window/size/width=1440
 window/size/height=2880
-window/size/test_width=400
-window/size/test_height=800
+window/size/test_width=450
+window/size/test_height=900
 window/dpi/allow_hidpi=true
 window/handheld/orientation="portrait"
 window/stretch/mode="viewport"
@@ -36,5 +36,4 @@ window/stretch/aspect="keep_width"
 
 [rendering]
 
-environment/default_clear_color=Color( 0.301961, 0.301961, 0.301961, 1 )
 environment/default_environment="res://default_env.tres"

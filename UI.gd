@@ -1,7 +1,7 @@
 extends Control
 
 func _on_Start_pressed():
-	get_tree().change_scene("res://Game.tscn")
+	get_tree().change_scene("res://Scenes/Game.tscn")
 
 func _on_Menu_Button_pressed():
 	pause_mode = Node.PAUSE_MODE_PROCESS
@@ -26,11 +26,11 @@ func _on_Close_pressed():
 func _on_Quit_pressed():
 	get_node("Overlay Menu").visible = false
 	get_node("Center Menu").visible = true
-	get_tree().change_scene("res://UI.tscn")
+	get_tree().change_scene("res://Scenes/UI.tscn")
 	
 	get_tree().paused = false
 
 func _on_Reset_pressed():
-	get_tree().change_scene("res://Game.tscn")
+	get_tree().change_scene("res://Scenes/Game.tscn")
 	
 	get_tree().paused = false

@@ -14,18 +14,22 @@ var mDot
 var _timer
 
 func _ready():
-	glow = CanvasItemMaterial.new()
-	glow.blend_mode = BLEND_MODE_ADD
+	#glow = CanvasItemMaterial.new()
+	#glow.blend_mode = BLEND_MODE_ADD
 	
-	noglow = CanvasItemMaterial.new()
-	noglow.blend_mode = BLEND_MODE_DISABLED
+	#noglow = CanvasItemMaterial.new()
+	#noglow.blend_mode = BLEND_MODE_DISABLED
 	
-	sprite = Sprite.new()
-	sprite.texture = circle
-	sprite.material = glow
+	#sprite = Sprite.new()
+	#sprite.texture = circle
+	#sprite.material = glow
+	
+	#sprite = get_node("paddinglol")
 	
 	_timer = Timer.new()
 	add_child(_timer)
+	
+	#mDot = get_node("Light2D")
 
 	_timer.connect("timeout", self, "_on_Timer_timeout")
 	_timer.set_wait_time(0.05)
@@ -83,5 +87,5 @@ func build_box():
 	
 	mDot = sprite.duplicate()
 	mDot.position = Vector2(0,0)
-	mDot.modulate = Color.green
+	mDot.modulate = Color(1, 0, 0, 1)
 	add_child(mDot)

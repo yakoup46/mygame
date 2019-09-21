@@ -1,6 +1,6 @@
 extends Node2D
 
-onready var ui = preload("res://UI.tscn")
+onready var ui = preload("res://Scenes/UI.tscn")
 
 var score = 0
 var currentBox
@@ -27,37 +27,38 @@ func _process(delta):
 func _physics_process(delta):
 	score = 0
 	
-	for box in boxes:
-		
-		var inRed = isInside($LandingZone.get_node("Red"), box.get_node("RigidBody2D/Box"))
-		var inGreen = isInside($LandingZone.get_node("Green"), box.get_node("RigidBody2D/Box"))
-		var inYellow = isInside($LandingZone.get_node("Yellow"), box.get_node("RigidBody2D/Box"))
-	
-		if inRed:
-			score = 1
+	for zone in $Zones.get_children():
+		for box in boxes:
+			if (zone.get_node("Area2D") != null):
+				var goal = isInside(zone.get_node("Area2D"), box.get_node("RigidBody2D/Box"))
 			
-		#if inYellow:
-			#score = 2
+				if (goal):
+					print(zone.points)
+					score = zone.points
 		
-		#if inGreen:
-			#score = 3
-	
-		$Score.text = str("Score: ", score)
-	
+#	for box in boxes:
+#
+#		var inRed = isInside($LandingZone.get_node("Red"), box.get_node("RigidBody2D/Box"))
+#		var inGreen = isInside($LandingZone.get_node("Green"), box.get_node("RigidBody2D/Box"))
+#		var inYellow = isInside($LandingZone.get_node("Yellow"), box.get_node("RigidBody2D/Box"))
+#
+#		if inRed:
+#			score = 1
+#
+#		if inYellow:
+#			score = 2
+#
+#		if inGreen:
+#			score = 3
+#
+	$Score.text = str("Score: ", score)
+#
 	if (currentBox.get_node("RigidBody2D").mode == RigidBody2D.MODE_RIGID):
 		currentBox.active = false
 		currentBox = boxHolder.duplicate()
 		currentBox.get_node("RigidBody2D/CollisionShape2D").disabled = true
 		boxes.append(currentBox)
 		add_child(currentBox)
-		
-	if (score == 1):
-		$LandingZone.get_node("Red").visible = true
-		$Playground.visible = false
-		
-	if (score == 0):
-		$LandingZone.get_node("Red").visible = false
-		$Playground.visible = true
 		
 func isInside(area, box):
 	var boxPos = box.global_position
