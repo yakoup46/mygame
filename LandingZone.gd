@@ -12,7 +12,6 @@ func _ready():
 	print("ready")
 
 func _draw():
-	print("draw")
 	draw_line(Vector2(0, 0), Vector2(size.x + thickness/2, 0), color, thickness, true)
 	draw_line(Vector2(size.x, 0), Vector2(size.x, size.y + thickness/2), color, thickness, true)
 	draw_line(Vector2(size.x, size.y), Vector2(0 - thickness/2, size.y), color, thickness, true)

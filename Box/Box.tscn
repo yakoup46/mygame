@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Box/Box.gd" type="Script" id=1]
 [ext_resource path="res://white_circle.png" type="Texture" id=2]
 [ext_resource path="res://red_circle.png" type="Texture" id=3]
 [ext_resource path="res://Box/RigidBody2D.gd" type="Script" id=4]
-[ext_resource path="res://Box/box.png" type="Texture" id=5]
+[ext_resource path="res://Box/box_top.png" type="Texture" id=5]
+[ext_resource path="res://Box/box_bottom.png" type="Texture" id=6]
 
 [sub_resource type="PhysicsMaterial" id=1]
 friction = 0.5
@@ -29,7 +30,7 @@ time_fade_out = 0.1
 time_anim = 1.0
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
-position = Vector2( -18.0635, 6.021 )
+position = Vector2( -11.7255, 6.021 )
 mode = 1
 physics_material_override = SubResource( 1 )
 gravity_scale = 9.0
@@ -38,9 +39,16 @@ script = ExtResource( 4 )
 [node name="Sprite" type="Sprite" parent="RigidBody2D"]
 editor/display_folded = true
 
-[node name="box" type="Sprite" parent="RigidBody2D/Sprite"]
-scale = Vector2( 0.75, 0.75 )
+[node name="box_top" type="Sprite" parent="RigidBody2D/Sprite"]
+light_mask = 0
+position = Vector2( -0.369041, 0.0352592 )
+scale = Vector2( 0.202254, 0.202254 )
 texture = ExtResource( 5 )
+
+[node name="box_bottom" type="Sprite" parent="RigidBody2D/Sprite/box_top"]
+show_behind_parent = true
+position = Vector2( -1.94806, 1.94806 )
+texture = ExtResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
 shape = SubResource( 2 )

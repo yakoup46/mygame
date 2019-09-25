@@ -1,7 +1,7 @@
 extends Control
 
 func _on_Start_pressed():
-	get_tree().change_scene("res://Scenes/Game.tscn")
+	LevelManager.load_level()
 
 func _on_Menu_Button_pressed():
 	pause_mode = Node.PAUSE_MODE_PROCESS
@@ -31,6 +31,11 @@ func _on_Quit_pressed():
 	get_tree().paused = false
 
 func _on_Reset_pressed():
-	get_tree().change_scene("res://Scenes/Game.tscn")
+	LevelManager.load_level()
 	
 	get_tree().paused = false
+
+func _on_Next_pressed():
+	LevelManager.level += 1
+	LevelManager.load_level()
+	pass # Replace with function body.

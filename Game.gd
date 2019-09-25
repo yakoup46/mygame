@@ -2,27 +2,25 @@ extends Node2D
 
 onready var ui = preload("res://Scenes/UI.tscn")
 
+export (int) var level_number
+
 var score = 0
 var currentBox
 var boxHolder
 var boxes = []
+var ui_node
 
 func _ready():
-	var node = ui.instance()
+	ui_node = ui.instance()
 	
-	node.get_node("Center Menu").visible = false
-	node.get_node("Menu Button").visible = true
+	ui_node.get_node("Center Menu").visible = false
+	ui_node.get_node("Menu Button").visible = true
 	
-	get_node("UI Placeholder").add_child(node)
+	get_node("UI Placeholder").add_child(ui_node)
 	
 	currentBox = $Box
 	boxHolder = $Box.duplicate()
 	boxes.append($Box)
-	
-func _process(delta):
-	#if ($Box.get_node("RigidBody2D").linear_velocity.y == 0 && $Box.get_node("RigidBody2D").angular_velocity == 0):
-		#print($LandingZone.score)
-	pass
 
 func _physics_process(delta):
 	score = 0
@@ -35,23 +33,25 @@ func _physics_process(delta):
 				if (goal):
 					print(zone.points)
 					score = zone.points
-		
-#	for box in boxes:
-#
-#		var inRed = isInside($LandingZone.get_node("Red"), box.get_node("RigidBody2D/Box"))
-#		var inGreen = isInside($LandingZone.get_node("Green"), box.get_node("RigidBody2D/Box"))
-#		var inYellow = isInside($LandingZone.get_node("Yellow"), box.get_node("RigidBody2D/Box"))
-#
-#		if inRed:
-#			score = 1
-#
-#		if inYellow:
-#			score = 2
-#
-#		if inGreen:
-#			score = 3
 #
 	$Score.text = str("Score: ", score)
+	
+	if (score > 0):
+		var all_at_rest = true
+		
+		for box in boxes:
+			if (!box.get_node("RigidBody2D").at_rest):
+				all_at_rest = false
+				break
+		
+		if (all_at_rest):
+			ui_node.get_node("Level").visible = true
+			
+			if (LevelManager.last_level == LevelManager.level):
+				ui_node.get_node("Level").get_node("Next Level/Label").text = str("Score: ", score, "\n YOU WON! GAME OVER!")
+				ui_node.get_node("Level/Next Level/Next").visible = false
+			else:
+				ui_node.get_node("Level").get_node("Next Level/Label").text = str("Score: ", score)
 #
 	if (currentBox.get_node("RigidBody2D").mode == RigidBody2D.MODE_RIGID):
 		currentBox.active = false
