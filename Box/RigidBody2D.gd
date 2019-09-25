@@ -15,7 +15,7 @@ func _input(event):
 		
 	if (event is InputEventScreenTouch and mode == RigidBody2D.MODE_STATIC):
 		if (event.pressed):
-			startPos = event.position
+			startPos = global_position
 		
 		if (!event.pressed):
 			var dir = event.position - startPos

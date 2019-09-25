@@ -33,7 +33,7 @@ time_anim = 1.0
 position = Vector2( -11.7255, 6.021 )
 mode = 1
 physics_material_override = SubResource( 1 )
-gravity_scale = 9.0
+gravity_scale = 20.0
 script = ExtResource( 4 )
 
 [node name="Sprite" type="Sprite" parent="RigidBody2D"]
