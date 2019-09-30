@@ -9,7 +9,6 @@
 
 [sub_resource type="PhysicsMaterial" id=1]
 friction = 0.5
-rough = true
 
 [sub_resource type="RectangleShape2D" id=2]
 custom_solver_bias = 1.0

@@ -25,8 +25,10 @@ func _input(event):
 				mode = RigidBody2D.MODE_RIGID
 				get_node("CollisionShape2D").disabled = false
 			
-				apply_central_impulse(Vector2(dir.x * 2, -sqrt(abs(dir.y*(10000)))))
-				angular_velocity = dir.normalized().x
+				#apply_central_impulse(Vector2(dir.x * 2, -sqrt(abs(dir.y*(14000)))))
+				#apply_central_impulse(Vector2(sqrt(abs(dir.x)), -sqrt(abs(dir.y))) * 125)
+				apply_central_impulse(dir * 5)
+				#angular_velocity = dir.normalized().x
 
 func _physics_process(delta):
 	print(linear_velocity.abs() < Vector2(5, 5))
