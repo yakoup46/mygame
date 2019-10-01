@@ -1,5 +1,18 @@
 extends Control
 
+func _ready():
+	var file = File.new()
+	
+	if (file.file_exists("user://settings.save")):
+		file.open("user://settings.save", File.READ)
+		
+		var settings = parse_json(file.get_line())
+	
+		get_node("Settings/VBoxContainer/Gravity/LineEdit").text = settings['g']
+		get_node("Settings/VBoxContainer/Power/LineEdit").text = settings['p']
+		get_node("Settings/VBoxContainer/Bounce/LineEdit").text = settings['b']
+		get_node("Settings/VBoxContainer/Friction/LineEdit").text = settings['f']
+
 func _on_Start_pressed():
 	LevelManager.load_level()
 
@@ -21,6 +34,19 @@ func _on_Settings_pressed():
 	get_node("Settings").visible = true
 
 func _on_Close_pressed():
+	var settings = File.new()
+	settings.open("user://settings.save", File.WRITE)
+	
+	var data = {}
+	
+	data['g'] = get_node("Settings/VBoxContainer/Gravity/LineEdit").text
+	data['p'] = get_node("Settings/VBoxContainer/Power/LineEdit").text
+	data['b'] = get_node("Settings/VBoxContainer/Bounce/LineEdit").text
+	data['f'] = get_node("Settings/VBoxContainer/Friction/LineEdit").text
+	
+	settings.store_line(to_json(data))
+	settings.close()
+	
 	get_node("Settings").visible = false
 
 func _on_Quit_pressed():

@@ -6,10 +6,16 @@ var thalf
 var win
 var shape
 var shapeowner
+var file
+var settings
 
 func _ready():
-	friction = 0
-	bounce = 0.5
+	file = File.new()
+	file.open("user://settings.save", File.READ)
+	settings = parse_json(file.get_line())
+	
+	friction = float(settings['f'])
+	bounce = float(settings['b'])
 	win = Vector2(1440, 2880)
 	thalf = (tin + tout) /2
 	for extpos in [
