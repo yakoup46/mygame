@@ -9,6 +9,9 @@ public class Power : MonoBehaviour
     Rigidbody2D rb;
     Vector2 startPos;
 
+    bool pressed = false;
+    bool forceApplied = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,22 +19,35 @@ public class Power : MonoBehaviour
         rb.bodyType = RigidbodyType2D.Static;
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            print("THERE");
-            startPos = transform.position;
+            forceApplied = false;
+            pressed = true;
         }
 
         if (Input.GetMouseButtonUp(0))
+        {
+            pressed = false;
+        }
+    }
+
+    void FixedUpdate()
+    {
+        if (pressed)
+        {
+            startPos = transform.position;
+        }
+
+        if (!forceApplied && !pressed)
         {
             Vector2 force = (Vector2) Camera.main.ScreenToWorldPoint(Input.mousePosition) - startPos;
 
             rb.bodyType = RigidbodyType2D.Dynamic;
             rb.AddForce(force * power, ForceMode2D.Impulse);
-            print("HERE");
+
+            forceApplied = true;
         }
     }
 }

@@ -65,6 +65,7 @@
   <ItemGroup>
     <Compile Include="Assets\Environment.cs" />
     <Compile Include="Assets\Power.cs" />
+    <Compile Include="Assets\Velocity.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/yakou/Boxed/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>

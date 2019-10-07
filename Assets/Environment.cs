@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Environment : MonoBehaviour
 {
-    const float cameraSize = 5;
+    const float cameraSize = 14.4f;
 
     // Start is called before the first frame update
     void Start()
