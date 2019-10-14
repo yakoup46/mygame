@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Explode : MonoBehaviour
 {
+    public ParticleSystem explosion;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,11 +20,14 @@ public class Explode : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        print(collision.gameObject.GetComponent<Force>().thrown);
+
         if (collision.gameObject.GetComponent<Force>().thrown == true)
         {
-            var exp = collision.gameObject.GetComponent<ParticleSystem>();
+            var exp = Instantiate(explosion, collision.gameObject.transform.position, Quaternion.identity);
+
+            Destroy(collision.gameObject);
             exp.Play();
-            Destroy(collision.gameObject, exp.main.duration);
         }
     }
 }
