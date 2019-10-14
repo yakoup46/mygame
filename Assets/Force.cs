@@ -13,43 +13,37 @@ public class Force : MonoBehaviour
 
     Vector2 startPos;
 
+    public bool thrown;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-
-        //if (time)
-        //{
-        //    rb.AddForce(new Vector2(0.05f, 1) * 2000.0f * force * Time.fixedDeltaTime, ForceMode2D.Impulse);
-        //}
-        //else
-        //{
-        //    rb.AddForce(new Vector2(0.05f, 1) * 40.0f * force, ForceMode2D.Impulse);
-        //}
-
-        //startPos = transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //if (!forced)
-        //{
-        //    rb.AddForce(transform.up * 10.0f, ForceMode2D.Impulse);
-        //    forced = true;
-        //}
-        //rb.MovePosition(rb.position + new Vector2(0, 1) * Time.fixedDeltaTime);
-
         if (Input.GetMouseButtonDown(0))
         {
             startPos = transform.position;
         }
 
-        if (Input.GetMouseButtonUp(0))
+        if (!thrown && Input.GetMouseButtonUp(0))
         {
             Vector2 dir = (Vector2) Camera.main.ScreenToWorldPoint(Input.mousePosition) - startPos;
-            //rb.AddForce(dir.normalized * dir.magnitude * 2, ForceMode2D.Impulse);
-            rb.AddForce(dir * 2, ForceMode2D.Impulse);
+
+            if (dir.magnitude > 7)
+            {
+                rb.AddForce(dir * 2, ForceMode2D.Impulse);
+                StartCoroutine(SetThrown());
+            }
         }
+    }
+    IEnumerator SetThrown()
+    {
+        yield return new WaitForSeconds(0.5f);
+        thrown = true;
+        gameObject.layer = 0;
     }
 }
