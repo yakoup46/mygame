@@ -15,38 +15,61 @@ public class Force : MonoBehaviour
 
     public bool thrown;
 
-    public GameObject trajectoryDotPrefab;
+	bool mouseDown;
+
+	public GameObject white;
+
+	GameObject[] whites = new GameObject[30];
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
 
-        for (int i = 0; i < 6; i++)
-        {
-            GameObject trajectoryDot = Instantiate(trajectoryDotPrefab);
-            trajectoryDot.transform.position = CalculatePosition(0.25f * i);
-        }
-    }
+		for (int i = 0; i < 30; i++)
+		{
+			whites[i] = Instantiate(white);
+		}
+
+	}
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+		Vector2 mousePos = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+		if (Input.GetMouseButtonDown(0))
         {
             startPos = transform.position;
+			mouseDown = true;
         }
 
         if (!thrown && Input.GetMouseButtonUp(0))
         {
-            Vector2 dir = (Vector2) Camera.main.ScreenToWorldPoint(Input.mousePosition) - startPos;
+            Vector2 dir = mousePos - startPos;
 
             if (dir.magnitude > 7)
             {
                 rb.AddForce(dir * 2, ForceMode2D.Impulse);
                 StartCoroutine(SetThrown());
             }
+
+			mouseDown = false;
         }
+
+        if (mouseDown)
+		{
+			Vector2 start = startPos;
+
+			for (int i=0; i < 30 ; i++)
+			{
+				Vector2 vel = (((mousePos - startPos) * 65) / rb.mass) * Time.fixedDeltaTime;
+
+				Vector2 step = PlotTrajectoryAtTime(start, vel, 0.5f * i); ;
+				whites[i].transform.position = step;
+			}
+
+		}
     }
 
     IEnumerator SetThrown()
@@ -56,9 +79,22 @@ public class Force : MonoBehaviour
         gameObject.layer = 0;
     }
 
-    private Vector2 CalculatePosition(float elapsedTime)
-    {
-        return new Vector2(0f, -240f) * elapsedTime * elapsedTime * 0.5f +
-               new Vector2(20f, 80f) * elapsedTime + Vector2.zero;
-    }
+	public Vector3 PlotTrajectoryAtTime(Vector3 start, Vector3 startVelocity, float time)
+	{
+		return (Vector2) start + (Vector2) startVelocity * time + Physics2D.gravity * time * time * 0.5f;
+	}
+
+	//public void PlotTrajectory(Vector3 start, Vector3 startVelocity, float timestep, float maxTime)
+	//{
+	//	Vector3 prev = start;
+	//	for (int i = 1; ; i++)
+	//	{
+	//		float t = timestep * i;
+	//		if (t > maxTime) break;
+	//		Vector3 pos = PlotTrajectoryAtTime(start, startVelocity, t);
+	//		if (Physics.Linecast(prev, pos)) break;
+	//		Debug.DrawLine(prev, pos, Color.red);
+	//		prev = pos;
+	//	}
+	//}
 }
