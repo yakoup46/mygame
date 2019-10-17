@@ -64,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\BoxController.cs" />
+    <Compile Include="Assets\CollisionIntersection.cs" />
     <Compile Include="Assets\EnterScreen.cs" />
     <Compile Include="Assets\Environment.cs" />
     <Compile Include="Assets\Explode.cs" />
