@@ -82,10 +82,14 @@ public class Corners : MonoBehaviour
         return point; // return it
     }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+    }
+
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.GetComponent<Rigidbody2D>().velocity == new Vector2(0, 0))
-        {
+        //if (collision.GetComponent<Rigidbody2D>().velocity == new Vector2(0, 0))
+        //{
             for (var i = 0; i < points.Count; i++)
             {
                 corners[i].transform.position = new Vector2(-100, 100);
@@ -125,7 +129,7 @@ public class Corners : MonoBehaviour
 
             area = (Math.Abs(area / 2.0f) / 5.5f) * 100;
             Tarea.text = area.ToString();
-        }
+        //}
     }
 
     void GetColliderPointsInsideZone(Collider2D box, Vector3[] corners, Vector3[] zcorners)
