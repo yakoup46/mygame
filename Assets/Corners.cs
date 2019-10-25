@@ -14,22 +14,22 @@ public class Corners : MonoBehaviour
     GameObject point;
 
     List<Vector2> points = new List<Vector2>();
-    List<GameObject> corners = new List<GameObject>();
+    //List<GameObject> corners = new List<GameObject>();
 
     // Start is called before the first frame update
     void Start()
     {
         zoneCorners = GetCorners(transform);
-        point = Instantiate(corner);
-        point.name = "red";
-        point.GetComponent<SpriteRenderer>().color = Color.red;
+        //point = Instantiate(corner);
+        //point.name = "red";
+        //point.GetComponent<SpriteRenderer>().color = Color.red;
 
-        corners.Add(point);
+        //corners.Add(point);
 
-        for (var i = 0; i < 15; i++)
-        {
-            corners.Add(Instantiate(point));
-        }
+        //for (var i = 0; i < 15; i++)
+        //{
+        //    corners.Add(Instantiate(point));
+        //}
     }
 
     Vector3[] GetCorners(Transform transform)
@@ -90,19 +90,19 @@ public class Corners : MonoBehaviour
     {
         //if (collision.GetComponent<Rigidbody2D>().velocity == new Vector2(0, 0))
         //{
-            for (var i = 0; i < points.Count; i++)
-            {
-                corners[i].transform.position = new Vector2(-100, 100);
-            }
+            //for (var i = 0; i < points.Count; i++)
+            //{
+            //    corners[i].transform.position = new Vector2(-100, 100);
+            //}
 
             points.Clear();
 
             CheckForLineIntersect(collision);
 
-            for (var i = 0; i < points.Count; i++)
-            {
-                corners[i].transform.position = points[i];
-            }
+            //for (var i = 0; i < points.Count; i++)
+            //{
+             //   corners[i].transform.position = points[i];
+    //        }
 
             Vector2[] pointsA = points.ToArray();
 

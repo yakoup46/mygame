@@ -119,7 +119,7 @@ MonoBehaviour:
   time: 1
   force: 1
   thrown: 0
-  white: {fileID: 7743674851427622716, guid: d42c707fef15546049915b37db54d2f3, type: 3}
+  dot: {fileID: 7743674851427622716, guid: d42c707fef15546049915b37db54d2f3, type: 3}
 --- !u!61 &9110015334339669838
 BoxCollider2D:
   m_ObjectHideFlags: 0

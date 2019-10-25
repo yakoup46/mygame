@@ -15,11 +15,22 @@ public class Force : MonoBehaviour
 
     public bool thrown;
 
+    public GameObject dot;
+    private GameObject[] dots = new GameObject[15];
+
+    private bool mouseDown;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-	}
+
+        for (int i=0; i < dots.Length; i++)
+        {
+            dots[i] = Instantiate(dot, transform);
+            dots[i].transform.position = transform.position;
+        }
+    }
 
     // Update is called once per frame
     void Update()
@@ -29,6 +40,7 @@ public class Force : MonoBehaviour
 		if (Input.GetMouseButtonDown(0))
         {
             startPos = transform.position;
+            mouseDown = true;
         }
 
         if (!thrown && Input.GetMouseButtonUp(0))
@@ -39,6 +51,17 @@ public class Force : MonoBehaviour
             {
                 rb.AddForce(dir * 2, ForceMode2D.Impulse);
                 StartCoroutine(SetThrown());
+            }
+
+            mouseDown = false;
+        }
+
+        if (mouseDown)
+        {
+            for (int i = 0; i < dots.Length; i++)
+            {
+                //var len = mousePos - tran
+                dots[i].transform.position = (Vector2)transform.position + (mousePos.normalized / dots.Length) * i;
             }
         }
     }
