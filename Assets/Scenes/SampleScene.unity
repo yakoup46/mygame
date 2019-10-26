@@ -281,7 +281,7 @@ MonoBehaviour:
   time: 1
   force: 1
   thrown: 0
-  powerTrail: {fileID: 0}
+  dot: {fileID: 0}
 --- !u!50 &367232863
 Rigidbody2D:
   serializedVersion: 4
@@ -607,13 +607,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 497614846}
-  m_LocalRotation: {x: 0, y: 0, z: -0.08715578, w: 0.9961947}
-  m_LocalPosition: {x: 8.5, y: 10.56, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 7.81, y: 10.57, z: 0}
   m_LocalScale: {x: 7, y: 7, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 13
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -10}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &497614851
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1262,13 +1262,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1266001456}
-  m_LocalRotation: {x: 0, y: 0, z: -0.08715578, w: 0.9961947}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 8.33, y: 8.56, z: 0}
   m_LocalScale: {x: 15, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 14
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -10}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1266001459
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1356,7 +1356,7 @@ MonoBehaviour:
   time: 1
   force: 1
   thrown: 0
-  powerTrail: {fileID: 0}
+  dot: {fileID: 0}
 --- !u!50 &1317802903
 Rigidbody2D:
   serializedVersion: 4
@@ -1502,7 +1502,7 @@ MonoBehaviour:
   time: 1
   force: 1
   thrown: 0
-  powerTrail: {fileID: 0}
+  dot: {fileID: 0}
 --- !u!50 &1366993528
 Rigidbody2D:
   serializedVersion: 4
@@ -1648,7 +1648,7 @@ MonoBehaviour:
   time: 1
   force: 1
   thrown: 0
-  powerTrail: {fileID: 0}
+  dot: {fileID: 0}
 --- !u!50 &1667176853
 Rigidbody2D:
   serializedVersion: 4
@@ -1951,7 +1951,7 @@ MonoBehaviour:
   time: 1
   force: 1
   thrown: 0
-  powerTrail: {fileID: 0}
+  dot: {fileID: 0}
 --- !u!50 &2012898456
 Rigidbody2D:
   serializedVersion: 4

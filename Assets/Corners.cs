@@ -16,6 +16,8 @@ public class Corners : MonoBehaviour
     List<Vector2> points = new List<Vector2>();
     //List<GameObject> corners = new List<GameObject>();
 
+    Dictionary<GameObject, float> areas = new Dictionary<GameObject, float>();
+
     // Start is called before the first frame update
     void Start()
     {
@@ -72,6 +74,14 @@ public class Corners : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        float totalArea = 0;
+
+        foreach (KeyValuePair<GameObject, float> a in areas)
+        {
+            totalArea += a.Value;
+        }
+
+        Tarea.text = totalArea.ToString();
     }
 
     Vector3 RotatePointAroundPivot(Vector3 point, Vector3 pivot, Vector3 angles)
@@ -82,19 +92,14 @@ public class Corners : MonoBehaviour
         return point; // return it
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-    }
-
     private void OnTriggerStay2D(Collider2D collision)
     {
         //if (collision.GetComponent<Rigidbody2D>().velocity == new Vector2(0, 0))
         //{
-            //for (var i = 0; i < points.Count; i++)
-            //{
-            //    corners[i].transform.position = new Vector2(-100, 100);
-            //}
-
+        //for (var i = 0; i < points.Count; i++)
+        //{
+        //    corners[i].transform.position = new Vector2(-100, 100);
+        //}
             points.Clear();
 
             CheckForLineIntersect(collision);
@@ -128,7 +133,10 @@ public class Corners : MonoBehaviour
             }
 
             area = (Math.Abs(area / 2.0f) / 5.5f) * 100;
-            Tarea.text = area.ToString();
+
+        areas[collision.gameObject] = area;
+
+      
         //}
     }
 

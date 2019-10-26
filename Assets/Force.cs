@@ -25,11 +25,11 @@ public class Force : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
 
-        for (int i=0; i < dots.Length; i++)
-        {
-            dots[i] = Instantiate(dot, transform);
-            dots[i].transform.position = transform.position;
-        }
+        //for (int i=0; i < dots.Length; i++)
+        //{
+        //    dots[i] = Instantiate(dot, transform);
+        //    dots[i].transform.position = transform.position;
+        //}
     }
 
     // Update is called once per frame
@@ -58,11 +58,11 @@ public class Force : MonoBehaviour
 
         if (mouseDown)
         {
-            for (int i = 0; i < dots.Length; i++)
-            {
+           // for (int i = 0; i < dots.Length; i++)
+            //{
                 //var len = mousePos - tran
-                dots[i].transform.position = (Vector2)transform.position + (mousePos.normalized / dots.Length) * i;
-            }
+             //   dots[i].transform.position = (Vector2)transform.position + (mousePos.normalized / dots.Length) * i;
+            //}
         }
     }
 
