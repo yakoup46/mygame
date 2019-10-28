@@ -61,19 +61,32 @@ public class ThrowLine : MonoBehaviour
             for (int i=0; i < numberOfDots; i++)
             {
                 SpriteRenderer s = dotNodes[i].GetComponent<SpriteRenderer>();
+                Vector3 off = aimPos - (Vector2)transform.position;
 
                 if ((float)i / (float)numberOfDots < animPhase)
                 {
-                    s.color = new Color(1f, 1f, 1f, Mathf.Lerp(s.color.a, 1, Time.deltaTime / timeFadeIn));
+                    if (off.magnitude * 1.5 > maxRange)
+                    {
+                        s.color = new Color(1f, 2-(float) (off.magnitude * 1.5) / maxRange, 2-(float)(off.magnitude * 1.5) / maxRange, Mathf.Lerp(s.color.a, 1, Time.deltaTime / timeFadeIn));
+                    }
+                    else
+                    {
+                        s.color = new Color(1f, 1f, 1f, Mathf.Lerp(s.color.a, 1, Time.deltaTime / timeFadeIn));
+                    }
                 }
                 else
                 {
-                    s.color = new Color(1f, 1f, 1f, Mathf.Lerp(s.color.a, 0, Time.deltaTime / timeFadeOut));
+                    if (off.magnitude * 1.5 > maxRange)
+                    {
+                        s.color = new Color(1f, 2 - (float)(off.magnitude * 1.5) / maxRange, 2 - (float)(off.magnitude * 1.5) / maxRange, Mathf.Lerp(s.color.a, 0, Time.deltaTime / timeFadeIn));
+                    }
+                    else
+                    {
+                        s.color = new Color(1f, 1f, 1f, Mathf.Lerp(s.color.a, 0, Time.deltaTime / timeFadeOut));
+                    }
                 }
 
                 dotNodes[i].transform.localScale = dotNodes[i].transform.localScale * (1 - Time.deltaTime / timeScale) + Vector3.one * dotScale * EaseOut((float)i / (float)numberOfDots) * Time.deltaTime / timeScale;
-
-                Vector3 off = aimPos - (Vector2) transform.position;
 
                 if (off.magnitude > maxRange)
                 {
@@ -92,7 +105,7 @@ public class ThrowLine : MonoBehaviour
             for (int i = 0; i < numberOfDots; i++)
             {
                 SpriteRenderer s = dotNodes[i].GetComponent<SpriteRenderer>();
-                s.color = new Color(1f, 1f, 1f, Mathf.Lerp(s.color.a, 0, Time.deltaTime / timeFadeOut));
+                s.color = new Color(s.color.r, s.color.g, s.color.b, Mathf.Lerp(s.color.a, 0, Time.deltaTime / timeFadeOut));
 
                 dotNodes[i].transform.localScale = dotNodes[i].transform.localScale * (1 - Time.deltaTime / timeScale);
                 dotNodes[i].transform.position = dotNodes[i].transform.position * (1 - Time.deltaTime / timePos) + transform.position * Time.deltaTime / timePos;

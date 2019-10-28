@@ -121,6 +121,7 @@ MonoBehaviour:
   force: 1
   thrown: 0
   dot: {fileID: 7743674851427622716, guid: d42c707fef15546049915b37db54d2f3, type: 3}
+  power: {fileID: 7083566113139330521, guid: 3a9f2b8bec6d2b04791c12643639d26d, type: 3}
 --- !u!61 &9110015334339669838
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -160,10 +161,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numberOfDots: 12
-  dotScale: 0.5
+  dotScale: 0.1
   dotScaleEase: 1.5
   dotPosEase: 1.1
-  dotTexture: {fileID: 4663600921344186646, guid: e0975a0643dc50f4caf9cb21d4413821,
+  dotTexture: {fileID: 3632706640430466265, guid: 5c179a24af2224c4b852b411ef4ef4b2,
     type: 3}
   maxRange: 15
   timeAiming: 0.1

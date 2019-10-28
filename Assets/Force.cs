@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Force : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class Force : MonoBehaviour
     public GameObject dot;
     private GameObject[] dots = new GameObject[15];
 
+    public static int power;
+
     private bool mouseDown;
 
     // Start is called before the first frame update
@@ -30,12 +33,14 @@ public class Force : MonoBehaviour
         //    dots[i] = Instantiate(dot, transform);
         //    dots[i].transform.position = transform.position;
         //}
+
+        //power.text = "35";
     }
 
     // Update is called once per frame
     void Update()
     {
-		Vector2 mousePos = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 mousePos = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
 		if (Input.GetMouseButtonDown(0))
         {
@@ -49,6 +54,7 @@ public class Force : MonoBehaviour
 
             if (dir.magnitude > 7)
             {
+                dir = Vector2.ClampMagnitude(dir, Globals.power);
                 rb.AddForce(dir * 2, ForceMode2D.Impulse);
                 StartCoroutine(SetThrown());
             }
