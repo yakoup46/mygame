@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BoxController : MonoBehaviour
 {
-    List<GameObject> boxes = new List<GameObject>();
+    public List<GameObject> boxes = new List<GameObject>();
     GameObject activeBox;
 
     public GameObject animationBox;

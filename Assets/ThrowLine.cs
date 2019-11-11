@@ -24,6 +24,9 @@ public class ThrowLine : MonoBehaviour
     private Vector2 aimPos;
     private float animPhase = 0.0f;
 
+    private Vector2 startPos;
+    private bool mouseDown;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,6 +46,18 @@ public class ThrowLine : MonoBehaviour
     void Update()
     {
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            startPos = mousePos;
+            mouseDown = true;
+        }
+
+        if (Input.GetMouseButtonUp(0))
+        {
+            mouseDown = false;
+        }
+
         swipe = Input.GetMouseButton(0);
         animPhase = (animPhase + Time.deltaTime / timeAnim) % 1;
 
@@ -54,14 +69,14 @@ public class ThrowLine : MonoBehaviour
             }
         }
 
-        if (swipe && !GetComponent<Force>().thrown)
+        if (mouseDown && !GetComponent<Force>().thrown)
         {
             aimPos = aimPos * (1 - Time.deltaTime / timeAiming) + (mousePos * Time.deltaTime / timeAiming);
 
             for (int i=0; i < numberOfDots; i++)
             {
                 SpriteRenderer s = dotNodes[i].GetComponent<SpriteRenderer>();
-                Vector3 off = aimPos - (Vector2)transform.position;
+                Vector3 off = aimPos - startPos;
 
                 if ((float)i / (float)numberOfDots < animPhase)
                 {

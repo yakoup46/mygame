@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class Environment : MonoBehaviour
 {
-    const float cameraSize = 22.5f;
+    float cameraSize;
 
     // Start is called before the first frame update
     void Start()
     {
-        var width = (Camera.main.orthographicSize / 2880) * 1440;
+        cameraSize = Camera.main.orthographicSize;
+        var width = (cameraSize / 2880) * 1440;
         Camera.main.orthographicSize = (width / Screen.width) * Screen.height;
 
         SetupWalls();

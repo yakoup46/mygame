@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class Corners : MonoBehaviour
 {
     public GameObject corner;
-    public Text Tarea;
+    //public Text Tarea;
 
     Vector3[] zoneCorners;
     GameObject point;
@@ -17,6 +17,8 @@ public class Corners : MonoBehaviour
     //List<GameObject> corners = new List<GameObject>();
 
     Dictionary<GameObject, float> areas = new Dictionary<GameObject, float>();
+
+    public int score;
 
     // Start is called before the first frame update
     void Start()
@@ -81,7 +83,9 @@ public class Corners : MonoBehaviour
             totalArea += a.Value;
         }
 
-        Tarea.text = totalArea.ToString();
+        // Tarea.text = totalArea.ToString();
+
+        score = (int) totalArea;
     }
 
     Vector3 RotatePointAroundPivot(Vector3 point, Vector3 pivot, Vector3 angles)

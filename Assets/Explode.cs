@@ -20,7 +20,7 @@ public class Explode : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.GetComponent<Force>().thrown == true)
+        if (collision.enabled) // the platform effector disables this
         {
             var exp = Instantiate(explosion, collision.gameObject.transform.position, Quaternion.identity);
 

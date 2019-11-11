@@ -44,7 +44,7 @@ public class Force : MonoBehaviour
 
 		if (Input.GetMouseButtonDown(0))
         {
-            startPos = transform.position;
+            startPos = mousePos;
             mouseDown = true;
         }
 
@@ -52,11 +52,13 @@ public class Force : MonoBehaviour
         {
             Vector2 dir = mousePos - startPos;
 
-            if (dir.magnitude > 7)
+            if (dir.magnitude > 4)
             {
-                dir = Vector2.ClampMagnitude(dir, Globals.power);
-                rb.AddForce(dir * 2, ForceMode2D.Impulse);
-                StartCoroutine(SetThrown());
+                //dir = dir.sqrMagnitude;
+                dir = Vector2.ClampMagnitude(dir, 35);
+                rb.AddForce(dir * Mathf.Max((4 * Mathf.Cos(dir.magnitude / 27)), 2), ForceMode2D.Impulse);
+                thrown = true;
+                //StartCoroutine(SetThrown());
             }
 
             mouseDown = false;
@@ -72,10 +74,12 @@ public class Force : MonoBehaviour
         }
     }
 
+    /*
 	IEnumerator SetThrown()
 	{
 		yield return new WaitForSeconds(0.5f);
 		thrown = true;
 		gameObject.layer = 0;
 	}
+    */
 }
