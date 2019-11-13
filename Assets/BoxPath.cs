@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class BoxPath : MonoBehaviour
 {
     public Vector2[] points = new Vector2[4];
