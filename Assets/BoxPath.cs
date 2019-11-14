@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class BoxPath : MonoBehaviour
 {
     public Vector2[] points = new Vector2[4];
+    public float zPos = 0;
 
     Vector2 target;
     int atPos = 0;
@@ -36,6 +36,7 @@ public class BoxPath : MonoBehaviour
             }
         }
 
-        transform.position = Vector2.MoveTowards(transform.position, relPoints[atPos], Time.deltaTime * 10);
+        Vector2 newPos = Vector2.MoveTowards(transform.position, relPoints[atPos], Time.deltaTime * 10);
+        transform.position = new Vector3(newPos.x, newPos.y, zPos);
     }
 }
