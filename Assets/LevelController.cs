@@ -21,6 +21,8 @@ public class LevelController : MonoBehaviour
     void Update()
     {
         scoreText.text = targetZone.score.ToString();
+
+        Debug.Log(targetZone.score);
         
         if (AllBoxesAtRest() && targetZone.score >= 100)
         {
