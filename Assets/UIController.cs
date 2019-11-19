@@ -12,6 +12,8 @@ public class UIController : MonoBehaviour
     public GameObject LandingScene;
     public GameObject LevelScene;
     public GameObject PauseScene;
+    public GameObject LoseScene;
+    public GameObject WinScene;
 
     public GameObject Background;
 
@@ -40,7 +42,7 @@ public class UIController : MonoBehaviour
     {
         Background.SetActive(false);
         HideAllScenes();
-        SceneManager.LoadScene("Level1");
+        SceneManager.LoadScene("0001");
         PauseScene.SetActive(true);
     }
 
@@ -56,10 +58,24 @@ public class UIController : MonoBehaviour
         LandingScene.SetActive(true);
     }
 
+    public void ShowLoseScene()
+    {
+        HideAllScenes();
+        LoseScene.SetActive(true);
+    }
+
+    public void ShowWinScene()
+    {
+        HideAllScenes();
+        WinScene.SetActive(true);
+    }
+
     void HideAllScenes()
     {
         LandingScene.SetActive(false);
         LevelScene.SetActive(false);
         PauseScene.SetActive(false);
+        LoseScene.SetActive(false);
+        WinScene.SetActive(false);
     }
 }

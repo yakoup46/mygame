@@ -19,6 +19,6 @@ public class Reset : MonoBehaviour
 
     public void ResetScene()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("TestRun");
     }
 }

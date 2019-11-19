@@ -48,7 +48,7 @@ public class Force : MonoBehaviour
             mouseDown = true;
         }
 
-        if (!thrown && Input.GetMouseButtonUp(0))
+        if (!thrown && Input.GetMouseButtonUp(0) && mouseDown)
         {
             Vector2 dir = mousePos - startPos;
 
