@@ -39,6 +39,11 @@ public class UIController : MonoBehaviour
         
     }
 
+    public void LoadLevel(string n)
+    {
+        SceneManager.LoadScene(n);
+    }
+
     public void ShowGameScene()
     {
         Background.SetActive(false);
@@ -69,6 +74,11 @@ public class UIController : MonoBehaviour
     {
         HideAllScenes();
         WinScene.SetActive(true);
+    }
+
+    public void QuitGame()
+    {
+        SceneManager.LoadScene("UI");
     }
 
     void HideAllScenes()

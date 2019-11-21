@@ -111,7 +111,7 @@ public class ThrowLine : MonoBehaviour
 
                 off *= EaseOut((float)i / (float)numberOfDots);
 
-                dotNodes[i].transform.position = dotNodes[i].transform.position * (1 - Time.deltaTime / timePos) + (transform.position + off) * Time.deltaTime / timePos;
+                dotNodes[i].transform.position = dotNodes[i].transform.position * (1 - Time.deltaTime / timePos) + (new Vector3(transform.position.x, transform.position.y, 0) + off) * Time.deltaTime / timePos;
             }
         }
         else if (!GetComponent<Force>().thrown)

@@ -77,7 +77,7 @@ public class LevelController : MonoBehaviour
                 stars.RemoveStar(3);
             }
             
-            if (boxes.ThrownBoxes() == maxNumberOfBoxes)
+            if (boxes.ThrownBoxes() == maxNumberOfBoxes || s == 3)
             {
                 if (s == 0)
                 {
@@ -86,6 +86,7 @@ public class LevelController : MonoBehaviour
                 else if (stars.GetAnimatonDone(s))
                 {
                     UI.ShowWinScene();
+                    Session.SetStars(SceneManager.GetActiveScene().name, s);
                 }
             }
 
