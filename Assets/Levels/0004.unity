@@ -432,7 +432,7 @@ PrefabInstance:
     - target: {fileID: 7218549916412395188, guid: 975a263889bf62a4aa024d2ec597606b,
         type: 3}
       propertyPath: maxNumberOfBoxes
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7218549916412395188, guid: 975a263889bf62a4aa024d2ec597606b,
         type: 3}
@@ -444,6 +444,11 @@ PrefabInstance:
       propertyPath: percentageFor3Stars
       value: 99
       objectReference: {fileID: 0}
+    - target: {fileID: 7218549916412395188, guid: 975a263889bf62a4aa024d2ec597606b,
+        type: 3}
+      propertyPath: nextLevel
+      value: 0005
+      objectReference: {fileID: 0}
     - target: {fileID: 1494080111766219641, guid: 975a263889bf62a4aa024d2ec597606b,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -453,6 +458,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.58
+      objectReference: {fileID: 0}
+    - target: {fileID: 3088943960832552003, guid: 975a263889bf62a4aa024d2ec597606b,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 975a263889bf62a4aa024d2ec597606b, type: 3}

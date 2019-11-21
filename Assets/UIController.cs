@@ -14,6 +14,7 @@ public class UIController : MonoBehaviour
     public GameObject PauseScene;
     public GameObject LoseScene;
     public GameObject WinScene;
+    public GameObject TrayScene;
 
     public GameObject Background;
 
@@ -77,5 +78,6 @@ public class UIController : MonoBehaviour
         PauseScene.SetActive(false);
         LoseScene.SetActive(false);
         WinScene.SetActive(false);
+        TrayScene.SetActive(false);
     }
 }

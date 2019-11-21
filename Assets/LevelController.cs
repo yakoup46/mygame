@@ -13,15 +13,16 @@ public class LevelController : MonoBehaviour
     public StarManager stars;
     public UIController UI;
 
-    public int boxesForThreeStars;
-    public float percentageFor2Stars;
-    public float percentageFor3Stars;
+    // public int boxesForThreeStars;
+    // public float percentageFor2Stars;
+    // public float percentageFor3Stars;
     public int maxNumberOfBoxes;
 
     // Start is called before the first frame update
     void Start()
     {
-        boxesForThreeStars += 1; // the box they haven't thrown yet is on the stack
+        //UI.TrayScene.transform.Find("Details").GetComponent<Text>().text = percentageFor2Stars.ToString() + " | " + percentageFor3Stars.ToString() + " | " + boxesForThreeStars.ToString() + " | " + maxNumberOfBoxes.ToString();
+        //boxesForThreeStars += 1; // the box they haven't thrown yet is on the stack
     }
 
     public void Restart()
@@ -37,72 +38,52 @@ public class LevelController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        int s = 0;
         scoreText.text = targetZone.score.ToString();
 
         if (AllBoxesAtRest())
         {
-            if (boxes.boxes.Count <= boxesForThreeStars)
+            // one star
+            if (targetZone.score > 80)
             {
-                if (targetZone.score > percentageFor2Stars)
-                {
-                    stars.PlayStar(1);
-                    stars.PlayStar(2);
-                }
-                else
-                {
-                    if (stars.GetAnimated(1))
-                    {
-                        stars.RemoveStar(1);
-                    }
-
-                    if (stars.GetAnimated(2))
-                    {
-                        stars.RemoveStar(2);
-                    }
-                }
-
-                if (targetZone.score > percentageFor3Stars)
-                {
-                    stars.PlayStar(3);
-                    UI.ShowWinScene();
-                }
-                else if (stars.GetAnimated(3))
-                {
-                    stars.RemoveStar(3);
-                }
+                stars.PlayStar(1);
+                s = 1;
             }
-            else
+            else if (stars.GetAnimated(1))
             {
-                if (targetZone.score > percentageFor2Stars)
-                {
-                    stars.PlayStar(1);
-                }
-                else if (stars.GetAnimated(1))
-                {
-                    stars.RemoveStar(1);
-                }
-
-                if (targetZone.score > percentageFor3Stars)
-                {
-                    stars.PlayStar(2);
-                }
-                else if (stars.GetAnimated(2))
-                {
-                    stars.RemoveStar(2);
-                }
+                s = 0;
+                stars.RemoveStar(1);
             }
 
-
-            if (boxes.boxes.Count > maxNumberOfBoxes + 1)
+            if (targetZone.score > 90)
             {
-                if (!stars.GetAnimated(1) && !stars.GetAnimated(2))
-                {
-                    UI.ShowLoseScene();
-                }
-                else
-                {
-                    UI.ShowWinScene();
-                }
+                stars.PlayStar(2);
+                s = 2;
+            }
+            else if (stars.GetAnimated(2))
+            {
+                s = 1;
+                stars.RemoveStar(2);
+            }
+
+            if (targetZone.score > 99)
+            {
+                s = 3;
+                stars.PlayStar(3);
+            }
+            else if (stars.GetAnimated(3))
+            {
+                s = 2;
+                stars.RemoveStar(3);
+            }
+            
+            if (boxes.ThrownBoxes() == maxNumberOfBoxes && s == 0)
+            {
+                UI.ShowLoseScene();
+            }
+            else if (stars.GetAnimatonDone(s))
+            {
+                UI.ShowWinScene();
             }
         }
     }

@@ -429,6 +429,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -15.79
       objectReference: {fileID: 0}
+    - target: {fileID: 7218549916331616718, guid: 975a263889bf62a4aa024d2ec597606b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5143261652462438027, guid: 975a263889bf62a4aa024d2ec597606b,
         type: 3}
       propertyPath: m_BlockingMask.m_Bits
@@ -452,7 +457,7 @@ PrefabInstance:
     - target: {fileID: 7218549916412395188, guid: 975a263889bf62a4aa024d2ec597606b,
         type: 3}
       propertyPath: maxNumberOfBoxes
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7218549916412395188, guid: 975a263889bf62a4aa024d2ec597606b,
         type: 3}
@@ -493,6 +498,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4404333571636906327, guid: 975a263889bf62a4aa024d2ec597606b,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3088943960832552003, guid: 975a263889bf62a4aa024d2ec597606b,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 975a263889bf62a4aa024d2ec597606b, type: 3}

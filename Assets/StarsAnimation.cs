@@ -13,6 +13,7 @@ public class StarsAnimation : MonoBehaviour
     Vector3[] points;
 
     public bool animated = false;
+    public bool animationDone = false;
 
     void Awake()
     {
@@ -32,13 +33,14 @@ public class StarsAnimation : MonoBehaviour
         Destroy(m_Star);
         m_Star = Instantiate(star, transform.position, Quaternion.identity);
         animated = false;
+        animationDone = false;
     }
 
-    public void Animate()
+    public void Animate(float delay = 0f)
     {
         if (!animated)
         {
-            iTween.ScaleTo(m_Star, iTween.Hash("scale", new Vector3(1f, 1f, 1), "time", 1f, "easetype", "easeOutElastic", "oncomplete", "ScaleBack", "oncompletetarget", gameObject));
+            iTween.ScaleTo(m_Star, iTween.Hash("scale", new Vector3(1f, 1f, 1), "delay", delay, "time", 1f, "easetype", "easeOutElastic", "oncomplete", "ScaleBack", "oncompletetarget", gameObject));
         }
 
         animated = true;
@@ -46,8 +48,13 @@ public class StarsAnimation : MonoBehaviour
 
     void ScaleBack()
     {
-        iTween.MoveTo(m_Star, iTween.Hash("path", points, "time", 1.0f, "easetype", "easeInCubic"));
-        iTween.ScaleTo(m_Star, iTween.Hash("scale", new Vector3(0.25f, 0.25f, 1), "easetype", "easeInCubic", "time", 1.0f));
+        iTween.MoveTo(m_Star, iTween.Hash("path", points, "time", 0.5f, "easetype", "easeInCubic"));
+        iTween.ScaleTo(m_Star, iTween.Hash("scale", new Vector3(0.25f, 0.25f, 1), "easetype", "easeInCubic", "time", 0.5f, "oncomplete", "Finished", "oncompletetarget", gameObject));
+    }
+
+    void Finished()
+    {
+        animationDone = true;
     }
 
     // Update is called once per frame

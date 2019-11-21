@@ -39,6 +39,18 @@ public class StarManager : MonoBehaviour
         return false;
     }
 
+    public bool GetAnimatonDone(int star)
+    {
+        switch (star)
+        {
+            case 1: return star1.animationDone;
+            case 2: return star2.animationDone;
+            case 3: return star3.animationDone;
+        }
+
+        return false;
+    }
+
     void PlayStarOne()
     {
         star1.Animate();
@@ -46,12 +58,30 @@ public class StarManager : MonoBehaviour
 
     void PlayStarTwo()
     {
-        star2.Animate();
+        if (star1.animationDone)
+        {
+            star2.Animate();
+        }
+        else
+        {
+            star2.Animate(1.25f);
+        }
     }
 
     void PlayStarThree()
     {
-        star3.Animate();
+        if (star1.animationDone && star2.animationDone)
+        {
+            star3.Animate();
+        }
+        else if (star1.animationDone && !star2.animationDone)
+        {
+            star3.Animate(1.25f);
+        }
+        else
+        {
+            star3.Animate(2.5f);
+        }
     }
 
     void RemoveStarOne()

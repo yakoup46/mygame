@@ -15,6 +15,7 @@ public class Force : MonoBehaviour
     Vector2 startPos;
 
     public bool thrown;
+    public bool canThrow;
 
     public GameObject dot;
     private GameObject[] dots = new GameObject[15];
@@ -22,64 +23,46 @@ public class Force : MonoBehaviour
     public static int power;
 
     private bool mouseDown;
+    Vector2 mousePos;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-
-        //for (int i=0; i < dots.Length; i++)
-        //{
-        //    dots[i] = Instantiate(dot, transform);
-        //    dots[i].transform.position = transform.position;
-        //}
-
-        //power.text = "35";
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
+    private void Update()
     {
-        Vector2 mousePos = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePos = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-		if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0))
         {
             startPos = mousePos;
             mouseDown = true;
         }
 
-        if (!thrown && Input.GetMouseButtonUp(0) && mouseDown)
+        if (Input.GetMouseButtonUp(0) && mouseDown)
+        {
+            mouseDown = false;
+            canThrow = true;
+        }
+    }
+
+    // Update is called once per frame
+    void FixedUpdate()
+    {
+        if (canThrow && !thrown)
         {
             Vector2 dir = mousePos - startPos;
 
             if (dir.magnitude > 4)
             {
-                //dir = dir.sqrMagnitude;
                 dir = Vector2.ClampMagnitude(dir, 35);
                 rb.AddForce(dir * Mathf.Max((4 * Mathf.Cos(dir.magnitude / 27)), 2), ForceMode2D.Impulse);
                 thrown = true;
-                //StartCoroutine(SetThrown());
             }
 
-            mouseDown = false;
-        }
-
-        if (mouseDown)
-        {
-           // for (int i = 0; i < dots.Length; i++)
-            //{
-                //var len = mousePos - tran
-             //   dots[i].transform.position = (Vector2)transform.position + (mousePos.normalized / dots.Length) * i;
-            //}
+            canThrow = false;
         }
     }
-
-    /*
-	IEnumerator SetThrown()
-	{
-		yield return new WaitForSeconds(0.5f);
-		thrown = true;
-		gameObject.layer = 0;
-	}
-    */
 }
