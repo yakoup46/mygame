@@ -30,12 +30,12 @@ public class ThrowLine : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        aimPos = transform.position;
+        //aimPos = transform.position;
         dotNodes = new GameObject[numberOfDots];
 
         for (int i=0; i < numberOfDots; i++)
         {
-            dotNodes[i] = Instantiate(dotTexture, aimPos, Quaternion.identity);
+            dotNodes[i] = Instantiate(dotTexture);
 
             SpriteRenderer s = dotNodes[i].GetComponent<SpriteRenderer>();
             s.color = new Color(s.color.r, s.color.g, s.color.b, 0);
@@ -50,6 +50,7 @@ public class ThrowLine : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             startPos = mousePos;
+            aimPos = mousePos;
             mouseDown = true;
         }
 

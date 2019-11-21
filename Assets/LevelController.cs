@@ -77,14 +77,18 @@ public class LevelController : MonoBehaviour
                 stars.RemoveStar(3);
             }
             
-            if (boxes.ThrownBoxes() == maxNumberOfBoxes && s == 0)
+            if (boxes.ThrownBoxes() == maxNumberOfBoxes)
             {
-                UI.ShowLoseScene();
+                if (s == 0)
+                {
+                    UI.ShowLoseScene();
+                }
+                else if (stars.GetAnimatonDone(s))
+                {
+                    UI.ShowWinScene();
+                }
             }
-            else if (stars.GetAnimatonDone(s))
-            {
-                UI.ShowWinScene();
-            }
+
         }
     }
 
