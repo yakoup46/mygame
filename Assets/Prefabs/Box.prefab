@@ -1,5 +1,67 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6112903464827463290
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 3618302081216354151}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6094491270476569487}
+  m_Layer: 0
+  m_Name: Missing Prefab (Dummy)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6094491270476569487
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 7396371941093575912, guid: 4db6045fac55ca941bd551844a79c9fc,
+    type: 3}
+  m_PrefabInstance: {fileID: 3618302081216354151}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6112903464827463290}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5034168710373466023}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7868918583615994988
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 3618302081216354151}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5034168710373466023}
+  m_Layer: 0
+  m_Name: FlameThrower (Missing Prefab)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5034168710373466023
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 3618302081216354151}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7868918583615994988}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 6094491270476569487}
+  m_Father: {fileID: 9110015334339669834}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9110015334339669837
 GameObject:
   m_ObjectHideFlags: 0
@@ -32,7 +94,7 @@ Transform:
   m_LocalPosition: {x: -4.0912013, y: -14.906785, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 6094491270476569487}
+  - {fileID: 5034168710373466023}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -74,7 +136,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d7246d96a22dd48d3a555a1526996d5d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e24d6339223f3f94591960ae576f6de8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -120,7 +182,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   time: 1
   force: 1
+  canDestroy: 0
   thrown: 0
+  canThrow: 0
   dot: {fileID: 7743674851427622716, guid: d42c707fef15546049915b37db54d2f3, type: 3}
 --- !u!61 &9110015334339669838
 BoxCollider2D:
@@ -139,14 +203,14 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.34, y: 2.37}
+    oldSize: {x: 2.26, y: 2.25}
     newSize: {x: 0.5, y: 0.5}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.34, y: 2.37}
+  m_Size: {x: 2.26, y: 2.25}
   m_EdgeRadius: 0
 --- !u!114 &5119640618123135224
 MonoBehaviour:
@@ -180,11 +244,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 9110015334339669834}
     m_Modifications:
-    - target: {fileID: 7399614589066452122, guid: 4db6045fac55ca941bd551844a79c9fc,
-        type: 3}
-      propertyPath: m_Name
-      value: FlameThrower
-      objectReference: {fileID: 0}
     - target: {fileID: 7396371941093575912, guid: 4db6045fac55ca941bd551844a79c9fc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -240,6 +299,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7399614589066452122, guid: 4db6045fac55ca941bd551844a79c9fc,
+        type: 3}
+      propertyPath: m_Name
+      value: FlameThrower
+      objectReference: {fileID: 0}
+    - target: {fileID: 7400954138306634740, guid: 4db6045fac55ca941bd551844a79c9fc,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7238635601822443224, guid: 4db6045fac55ca941bd551844a79c9fc,
         type: 3}
       propertyPath: InitialModule.startColor.maxColor.r
@@ -270,16 +339,5 @@ PrefabInstance:
       propertyPath: InitialModule.startLifetime.scalar
       value: 0.25
       objectReference: {fileID: 0}
-    - target: {fileID: 7400954138306634740, guid: 4db6045fac55ca941bd551844a79c9fc,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4db6045fac55ca941bd551844a79c9fc, type: 3}
---- !u!4 &6094491270476569487 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7396371941093575912, guid: 4db6045fac55ca941bd551844a79c9fc,
-    type: 3}
-  m_PrefabInstance: {fileID: 3618302081216354151}
-  m_PrefabAsset: {fileID: 0}

@@ -83,6 +83,7 @@ public class ThrowLine : MonoBehaviour
                 {
                     if (off.magnitude * 1.5 > maxRange)
                     {
+                        Debug.Log(maxRange);
                         s.color = new Color(1f, 2-(float) (off.magnitude * 1.5) / maxRange, 2-(float)(off.magnitude * 1.5) / maxRange, Mathf.Lerp(s.color.a, 1, Time.deltaTime / timeFadeIn));
                     }
                     else

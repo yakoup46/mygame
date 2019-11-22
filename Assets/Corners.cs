@@ -14,7 +14,7 @@ public class Corners : MonoBehaviour
     GameObject point;
 
     List<Vector2> points = new List<Vector2>();
-    //List<GameObject> corners = new List<GameObject>();
+   // List<GameObject> corners = new List<GameObject>();
 
     Dictionary<GameObject, float> areas = new Dictionary<GameObject, float>();
 
@@ -24,16 +24,16 @@ public class Corners : MonoBehaviour
     void Start()
     {
         zoneCorners = GetCorners(transform);
-        //point = Instantiate(corner);
-        //point.name = "red";
-        //point.GetComponent<SpriteRenderer>().color = Color.red;
+      //  point = Instantiate(corner);
+       // point.name = "red";
+      //  point.GetComponent<SpriteRenderer>().color = Color.red;
 
-        //corners.Add(point);
+      //  corners.Add(point);
 
-        //for (var i = 0; i < 15; i++)
-        //{
+      //  for (var i = 0; i < 15; i++)
+      //  {
         //    corners.Add(Instantiate(point));
-        //}
+      //  }
     }
 
     Vector3[] GetCorners(Transform transform)
@@ -108,10 +108,10 @@ public class Corners : MonoBehaviour
 
             CheckForLineIntersect(collision);
 
-            //for (var i = 0; i < points.Count; i++)
-            //{
-             //   corners[i].transform.position = points[i];
-    //        }
+           // for (var i = 0; i < points.Count; i++)
+           // {
+           //     corners[i].transform.position = points[i];
+            //}
 
             Vector2[] pointsA = points.ToArray();
 
@@ -119,6 +119,7 @@ public class Corners : MonoBehaviour
             Array.Sort(pointsA, new ClockwiseComparer(collision.transform.position));
 
             float area = 0;
+        float possibleTotalArea = collision.GetComponent<BoxCollider2D>().size.x * collision.GetComponent<BoxCollider2D>().size.y;
             int j = pointsA.Length - 1;
 
             float[] Xs = new float[pointsA.Length];
@@ -136,7 +137,12 @@ public class Corners : MonoBehaviour
                 j = i;
             }
 
-            area = (Math.Abs(area / 2.0f) / 5.5f) * 100;
+            area = (Math.Abs(area / 2.0f) / possibleTotalArea) * 100;
+
+            if (area > 99.9)
+        {
+            area = 100;
+        }
 
         areas[collision.gameObject] = area;
 

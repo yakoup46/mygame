@@ -6,21 +6,19 @@ public class Explode : MonoBehaviour
 {
     public ParticleSystem explosion;
 
-    // Start is called before the first frame update
-    void Start()
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        
+        if (collision.gameObject.tag == "Box")
+        {
+            collision.gameObject.GetComponent<Force>().canDestroy = true;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        
-    }
+        bool canDestroy = collision.gameObject.GetComponent<Force>().canDestroy;
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.enabled) // the platform effector disables this
+        if (canDestroy)
         {
             var exp = Instantiate(explosion, collision.gameObject.transform.position, Quaternion.identity);
 

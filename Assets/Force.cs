@@ -14,6 +14,8 @@ public class Force : MonoBehaviour
 
     Vector2 startPos;
 
+    public bool canDestroy;
+
     public bool thrown;
     public bool canThrow;
 
@@ -58,7 +60,29 @@ public class Force : MonoBehaviour
             if (dir.magnitude > 4)
             {
                 dir = Vector2.ClampMagnitude(dir, 35);
-                rb.AddForce(dir * Mathf.Max((4 * Mathf.Cos(dir.magnitude / 27)), 2), ForceMode2D.Impulse);
+
+                float oldMin = 4;
+                float oldMax = 35;
+
+                float newMin = 4;
+                float nexMax = 15;
+
+                float newDir = (((dir.magnitude - oldMin) * (nexMax - newMin)) / (oldMax - oldMin)) + newMin;
+
+
+                // dir.magnitude / 35 * 15
+
+                // if (dir.magnitude > 25)
+                // {
+                //     rb.AddForce(dir.normalized * (Mathf.Pow(dir.magnitude, 0.33f) * 18), ForceMode2D.Impulse);
+                //  }
+                // else
+                // {
+                //     rb.AddForce(dir.normalized * (Mathf.Pow(dir.magnitude, 0.33f) * 14), ForceMode2D.Impulse);
+                // }
+
+                rb.AddForce(dir.normalized * newDir * 5, ForceMode2D.Impulse);
+
                 thrown = true;
             }
 
