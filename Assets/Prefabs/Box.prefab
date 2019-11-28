@@ -231,6 +231,7 @@ MonoBehaviour:
   dotTexture: {fileID: 3632706640430466265, guid: 5c179a24af2224c4b852b411ef4ef4b2,
     type: 3}
   maxRange: 15
+  maxRangeLine: 35
   timeAiming: 0.1
   timeFadeIn: 0.05
   timeFadeOut: 0.1

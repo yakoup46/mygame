@@ -16,6 +16,8 @@ public class UIController : MonoBehaviour
     public GameObject WinScene;
     public GameObject TrayScene;
 
+    public GameObject PowerText;
+
     public GameObject Background;
 
     // Start is called before the first frame update

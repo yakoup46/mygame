@@ -10,6 +10,7 @@ public class ThrowLine : MonoBehaviour
     public float dotPosEase = 1.1f;
     public GameObject dotTexture;
     public float maxRange = 320.0f;
+    public float maxRangeLine = 35.0f;
 
     // Timing Values
     public float timeAiming = 0.1f;
@@ -81,10 +82,9 @@ public class ThrowLine : MonoBehaviour
 
                 if ((float)i / (float)numberOfDots < animPhase)
                 {
-                    if (off.magnitude * 1.5 > maxRange)
+                    if (off.magnitude > maxRange)
                     {
-                        Debug.Log(maxRange);
-                        s.color = new Color(1f, 2-(float) (off.magnitude * 1.5) / maxRange, 2-(float)(off.magnitude * 1.5) / maxRange, Mathf.Lerp(s.color.a, 1, Time.deltaTime / timeFadeIn));
+                        s.color = new Color(1f, 2-(float) (off.magnitude) / maxRange, 2-(float)(off.magnitude) / maxRange, Mathf.Lerp(s.color.a, 1, Time.deltaTime / timeFadeIn));
                     }
                     else
                     {
@@ -93,9 +93,9 @@ public class ThrowLine : MonoBehaviour
                 }
                 else
                 {
-                    if (off.magnitude * 1.5 > maxRange)
+                    if (off.magnitude > maxRange)
                     {
-                        s.color = new Color(1f, 2 - (float)(off.magnitude * 1.5) / maxRange, 2 - (float)(off.magnitude * 1.5) / maxRange, Mathf.Lerp(s.color.a, 0, Time.deltaTime / timeFadeIn));
+                        s.color = new Color(1f, 2 - (float)(off.magnitude) / maxRange, 2 - (float)(off.magnitude) / maxRange, Mathf.Lerp(s.color.a, 0, Time.deltaTime / timeFadeIn));
                     }
                     else
                     {
@@ -105,9 +105,9 @@ public class ThrowLine : MonoBehaviour
 
                 dotNodes[i].transform.localScale = dotNodes[i].transform.localScale * (1 - Time.deltaTime / timeScale) + Vector3.one * dotScale * EaseOut((float)i / (float)numberOfDots) * Time.deltaTime / timeScale;
 
-                if (off.magnitude > maxRange)
+                if (off.magnitude > maxRangeLine)
                 {
-                    off = off.normalized * maxRange;
+                    off = off.normalized * maxRangeLine;
                 }
 
                 off *= EaseOut((float)i / (float)numberOfDots);

@@ -6,7 +6,7 @@ public class BoxController : MonoBehaviour
 {
     public List<GameObject> boxes = new List<GameObject>();
     public LevelController lvl;
-    GameObject activeBox;
+    public GameObject activeBox;
 
     public GameObject animationBox;
 
