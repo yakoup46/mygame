@@ -46,6 +46,7 @@ public class EnterScreen : MonoBehaviour
     void TweenDone()
     {
         GameObject box = Instantiate(this.box, transform.position, Quaternion.identity);
+        box.GetComponent<SpriteRenderer>().sprite = GetComponent<SpriteRenderer>().sprite;
 
         transform.position = startPos;
         transform.localScale = startScale;

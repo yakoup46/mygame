@@ -12,6 +12,7 @@ public class LevelController : MonoBehaviour
     public BoxController boxes;
     public StarManager stars;
     public UIController UI;
+    public GameObject progressBar;
 
     // public int boxesForThreeStars;
     // public float percentageFor2Stars;
@@ -40,6 +41,8 @@ public class LevelController : MonoBehaviour
     {
         int s = 0;
         scoreText.text = targetZone.score.ToString();
+
+        UpdateProgressBar(targetZone.score);
 
         if (AllBoxesAtRest())
         {
@@ -105,5 +108,24 @@ public class LevelController : MonoBehaviour
         }
 
         return true;
+    }
+
+    void UpdateProgressBar(float score)
+    {
+        // hard code score out of 100 right now
+        // hard code bar starting position of -8
+
+        float percentage = score / 100;
+
+        if (percentage > 1)
+        {
+            percentage = 1;
+        }
+
+        if (percentage > 0)
+        {
+            //progressBar.transform.localPosition = new Vector3(-8 - (-8 * percentage), progressBar.transform.position.y, progressBar.transform.position.z);
+            iTween.MoveTo(progressBar, iTween.Hash("x", -6 - (-6 * percentage), "time", 1.0f, "easetype", "easeOutQuad"));
+        }
     }
 }
