@@ -431,7 +431,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e24d6339223f3f94591960ae576f6de8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d054dc614cab48c4eb61a333d6d05d8b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -470,8 +470,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boxImages:
-  - {fileID: 21300000, guid: 54301e294137a8d45a3febc8c8a114e1, type: 3}
-  - {fileID: 21300000, guid: dc3f42c5ef50f5e48b4d4edb7bed491c, type: 3}
+  - {fileID: 21300000, guid: 6dcdd4521b33d294d9a981e092c0d6f6, type: 3}
+  - {fileID: 21300000, guid: d054dc614cab48c4eb61a333d6d05d8b, type: 3}
 --- !u!1 &7218549916331616718
 GameObject:
   m_ObjectHideFlags: 0
@@ -1274,16 +1274,6 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3800921496007461395, guid: 8d11a0d96879c1441ab3e7b27974c3b3,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3800921496007461395, guid: 8d11a0d96879c1441ab3e7b27974c3b3,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6756792159882188029, guid: 8d11a0d96879c1441ab3e7b27974c3b3,
         type: 3}
       propertyPath: m_IsActive
@@ -1359,6 +1349,16 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 7218549916412395188}
+    - target: {fileID: 3800921496007461395, guid: 8d11a0d96879c1441ab3e7b27974c3b3,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3800921496007461395, guid: 8d11a0d96879c1441ab3e7b27974c3b3,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d11a0d96879c1441ab3e7b27974c3b3, type: 3}
 --- !u!114 &7312742079107822455 stripped

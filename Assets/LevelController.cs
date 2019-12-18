@@ -33,7 +33,7 @@ public class LevelController : MonoBehaviour
 
     public void NextLevel()
     {
-        SceneManager.LoadScene(nextLevel);
+        SceneManager.LoadScene((int.Parse(SceneManager.GetActiveScene().name) + 1).ToString("D4"));
     }
 
     // Update is called once per frame
