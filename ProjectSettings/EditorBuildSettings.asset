@@ -13,14 +13,44 @@ EditorBuildSettings:
     guid: 94598c0fac02e0c42bfe0de4a857a8a0
   - enabled: 1
     path: Assets/Levels/0002.unity
-    guid: cbb5cab5271d10d45b6ce95dd2fd606f
+    guid: 079dbdf1f3ba24095b6e8660175a090b
   - enabled: 1
     path: Assets/Levels/0003.unity
-    guid: 2c29cd86aa2ac7849ba8de389f0adc52
+    guid: cbb5cab5271d10d45b6ce95dd2fd606f
   - enabled: 1
     path: Assets/Levels/0004.unity
     guid: 2fe1c7210d39f95459a61880f5b77473
   - enabled: 1
     path: Assets/Levels/0005.unity
-    guid: 7486819e82fd29e48b2005b098658627
+    guid: c2cf75045bce24d798f34e57ade28ca6
+  - enabled: 1
+    path: Assets/Levels/0006.unity
+    guid: 0609c163e8fea4476a63b572c099ca31
+  - enabled: 1
+    path: Assets/Levels/0007.unity
+    guid: b1f40c0b7888f477f96d602d61e6ec2b
+  - enabled: 1
+    path: Assets/Levels/0008.unity
+    guid: cd04271791f7f4fdba70d9a674742b66
+  - enabled: 1
+    path: Assets/Levels/0009.unity
+    guid: 0d388fffef41648b9b2192ccee4d55c1
+  - enabled: 1
+    path: Assets/Levels/0010.unity
+    guid: 3f007859dd3cb40938931100a4f2b114
+  - enabled: 1
+    path: Assets/Levels/0011.unity
+    guid: 299c4956821d14b2c8dfc76605530b8c
+  - enabled: 1
+    path: Assets/Levels/0012.unity
+    guid: 5834a4e5712f847c2ae33c9d613d4e24
+  - enabled: 1
+    path: Assets/Levels/0013.unity
+    guid: 4eeffa227347e400197fb323dc9a3a00
+  - enabled: 1
+    path: Assets/Levels/0014.unity
+    guid: efa5c2749dd3a41aaa523fb18ebd3b14
+  - enabled: 1
+    path: Assets/Levels/0015.unity
+    guid: 29a1a46c616f34cd7a483755899b9b80
   m_configObjects: {}
